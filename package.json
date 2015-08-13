@@ -1,0 +1,30 @@
+{
+  "name": "mean-library",
+  "version": "1.0.0",
+  "description": "Simple Library App using the MEAN stack.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikedklein/mean-library.git"
+  },
+  "keywords": [
+    "Mongo",
+    "AngularJS",
+    "NodeJS",
+    "ExpressJS"
+  ],
+  "author": "Mike Klein <mike@notioworks.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mikedklein/mean-library/issues"
+  },
+  "homepage": "https://github.com/mikedklein/mean-library#readme",
+  "dependencies": {
+    "body-parser": "^1.13.3",
+    "express": "^4.13.3",
+    "morgan": "^1.6.1"
+  }
+}

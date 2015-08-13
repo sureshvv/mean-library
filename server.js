@@ -12,10 +12,20 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
+var mongoose = require('mongoose');
 var config = require('./config');
 
 //Create new instance of express object
 var app = express();
+
+//Use mongoose to connect to the database
+mongoose.connect(config.database, function(err){
+    if(err) {
+        console.log(err);
+    } else {
+        console.log('Connected to the database.')
+    }
+})
 
 //Add in middleware
 app.use(bodyParser.urlencoded({ extended: true }));

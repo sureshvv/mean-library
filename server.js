@@ -42,7 +42,7 @@ app.use('/api', api);
 
 //Routes
 app.get('*', function(req, res){
-    res.sendFile(__dirname + '/public/views/index.html');
+    res.sendFile(__dirname + '/public/app/views/index.html');
 })
 
 //Start the server

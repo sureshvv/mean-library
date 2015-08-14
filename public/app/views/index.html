@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="/">
+    <meta charset="UTF-8">
+    <title>MEAN-Library</title>
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <!-- CDNS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular-route.min.js"></script>
+    <!-- Services -->
+    <script type="text/javascript" src="app/services/authService.js"></script>
+    <script type="text/javascript" src="app/services/userService.js"></script>
+    <!-- Controllers -->
+    <script type="text/javascript" src="app/controllers/mainController.js"></script>
+    <script type="text/javascript" src="app/controllers/userController.js"></script>
+    <!-- Routes -->
+    <script type="text/javascript" src="app/routes/app.routes.js"></script>
+    <!-- App JS -->
+    <script type="text/javascript" src="app/app.js"></script>
+</head>
+<body ng-app="BookApp" ng-controller="MainController as main">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><i class="fa fa-book"></i>Mean-Library</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+          <ul class="nav navbar-nav">
+            <li ng-if="!main.loggedIn"><a href="/login">Login <span class="sr-only">(current)</span></a></li>
+            <li ng-if="!main.loggedIn"><a href="/signup">Signup</a></li>
+            <li ng-if="main.loggedIn"><a href="#">Hello {{ main.user.username }}</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li ng-if="main.loggedIn"><a href="#" ng-click="main.doLogout()">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="content" ng-view>
+            <!-- Content goes here from router views -->
+        </div>
+    </div>
+    
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+</body>
+</html>

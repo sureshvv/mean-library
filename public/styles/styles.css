@@ -1,0 +1,36 @@
+/*
+ * Base Styles
+ */
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+.container-fluid, .content {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.content {
+   margin: 4rem 0 0 0;
+}
+
+/*
+ * Main Screen
+ */
+.navbar {
+    padding-left: .5rem;
+    padding-right: 1rem;
+}
+.navbar-brand > i {
+    padding-left:.3rem;
+    padding-right:.5rem;
+}
+.jumbotron {
+    height: 100%;
+    width: 100%;
+    padding-right: .3rem;
+    padding-left: .3rem;
+}

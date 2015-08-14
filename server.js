@@ -32,6 +32,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(morgan('dev'));
 
+//Public Static file render
+app.use(express.static(__dirname + '/public'));
+
 //require the routes file
 var api = require('./app/routes/api')(app, express);
 //add the router the middleware

@@ -3,3 +3,4 @@ node_modules/
 .env
 .notes
 config.js
+.git-credentials

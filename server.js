@@ -32,6 +32,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(morgan('dev'));
 
+//require the routes file
+var api = require('./app/routes/api')(app, express);
+//add the router the middleware
+app.use('/api', api);
+
 //Routes
 app.get('*', function(req, res){
     res.sendFile(__dirname + '/public/views/index.html');

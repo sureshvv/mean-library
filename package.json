@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/mikedklein/mean-library#readme",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.13.3",
     "express": "^4.13.3",
     "mongoose": "^4.1.2",

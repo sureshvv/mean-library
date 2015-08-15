@@ -14,9 +14,12 @@
     <!-- Services -->
     <script type="text/javascript" src="app/services/authService.js"></script>
     <script type="text/javascript" src="app/services/userService.js"></script>
+    <script type="text/javascript" src="app/services/bookService.js"></script>
+
     <!-- Controllers -->
     <script type="text/javascript" src="app/controllers/mainController.js"></script>
     <script type="text/javascript" src="app/controllers/userController.js"></script>
+    <script type="text/javascript" src="app/controllers/bookController.js"></script>
     <!-- Routes -->
     <script type="text/javascript" src="app/routes/app.routes.js"></script>
     <!-- App JS -->
@@ -39,7 +42,7 @@
           <ul class="nav navbar-nav">
             <li ng-if="!main.loggedIn"><a href="/login">Login <span class="sr-only">(current)</span></a></li>
             <li ng-if="!main.loggedIn"><a href="/signup">Signup</a></li>
-            <li ng-if="main.loggedIn"><a href="#">Hello {{ main.user.username }}</a></li>
+            <li ng-if="main.loggedIn"><a href="#">Hello {{ main.user.name }}</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li ng-if="main.loggedIn"><a href="#" ng-click="main.doLogout()">Logout</a></li>

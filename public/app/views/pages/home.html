@@ -1,9 +1,98 @@
 <div class="jumbotron text-center">
-    <h1>Sign up for Mean-Library</h1>
-    <div>
-        <p>Login to see your library,</p>
-        <p>Signup to start a new one!</p>
-        <a ng-href="/login" class="btn btn-primary">Login</a>
-        <a ng-href="/signup" class="btn btn-success">Signup</a>
+    <div class="not-logged-in" ng-if="!main.loggedIn">
+        <h1>Sign up for Mean-Library</h1>
+        <div>
+            <p>Login to see your library,</p>
+            <p>Signup to start a new one!</p>
+            <a ng-if="!main.loggedIn" ng-href="/login" class="btn btn-primary">Login</a>
+            <a ng-if="!main.loggedIn" ng-href="/signup" class="btn btn-success">Signup</a>
+        </div>     
+    </div>
+    <div class="logged-in" ng-if="main.loggedIn">
+        <h1>{{ main.user }}</h1>
+    </div>
+    <!-- Enter a new book review -->
+    <div class="row" ng-controller="BookController as book">
+        <div class="col-md-3">
+            <!-- Span Div -->
+        </div>
+        <div class="panel panel-primary col-md-6">
+          <div class="panel-heading">
+            <h3 class="panel-title">Tell everyone about a book!</h3>
+          </div>
+          <div class="panel-body">
+            <form class="form-horizontal" mehtod="post" ng-submit="book.creaeteBook()">
+                <fieldset>
+                    <div class="form-group">
+                        <div class="col-lg-12">
+                            <input class="form-control" id="title" placeholder="Title" autocomplete="off" type="text" name="Title" ng-model="book.bookData.title">  
+                        </div>
+                    </div>                    
+                    <div class="form-group">
+                        <div class="col-lg-12">
+                            <input class="form-control" id="author" placeholder="Author" autocomplete="off" type="text" name="author" ng-model="book.bookData.author">  
+                        </div>
+                    </div>                    
+                    <div class="form-group">
+                        <div class="col-lg-12">
+                            <textarea class="form-control" rows="3" id="content" placeholder="Write about the book" autocomplete="off" type="text" name="content" ng-model="book.bookData.content"></textarea>  
+                        </div>
+                    </div>                    
+                    <div class="form-group">
+                        <div class="col-lg-12">
+                            <select class="form-control" id="rating" name="Rating" placeholer="Rate It" ng-model="book.bookData.rating">
+                              <option>1</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                              <option>5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-lg-10 col-lg-offset-2">
+                        <button type="submit" class="btn btn-success">Create Review</button>
+                      </div>
+                    </div>
+                </fieldset>
+            </form>
+          </div>
+        </div> <!--End of Panel -->
+        <div class="col-md-3">
+            <!-- Span Div -->
+        </div>
+    </div>
+    <!-- Previous Entries -->
+    <div class="review-container row" ng-controller="BookController as book">
+        <div class="row" ng-repeat="book in book.books">
+            <div class="col-md-3">
+                <!-- Span Div -->
+            </div>
+            <div class="panel panel-primary col-md-6">
+              <div class="panel-heading">
+                <h3 class="panel-title">{{ book.title }}</h3>
+              </div>
+              <div class="panel-body book">
+                <div class="container">
+                    <div class="row">
+                        <h5 class="col-md-4 top-row-review">Author: {{ book.author }}</h5>
+                        <div class="col-md-4"></div>
+                        <h5 class="col-md-4 top-row-review">Rating: {{ book.rating }}</h5>
+                    </div>
+                    <div class="row">
+                        <h5 class="col-md-12"> Review </h5>
+                    </div>
+                    <div class="row">
+                        <p class="col-md-12"> 
+                            {{ book.content }}
+                        </p>
+                    </div>
+                  </div>
+                </div>
+            </div> <!--End of Panel -->
+            <div class="col-md-3">
+                <!-- Span Div -->
+            </div>
+        </div>
     </div>
 </div>

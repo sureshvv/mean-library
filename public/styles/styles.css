@@ -29,8 +29,29 @@ html, body {
     padding-right:.5rem;
 }
 .jumbotron {
-    height: 100%;
+    min-height: 100%;
     width: 100%;
     padding-right: .3rem;
     padding-left: .3rem;
+    margin-bottom:0;
+}
+
+/*
+ * Book Reviews and entry
+ */
+
+.panel {
+    padding: 0;
+}
+
+.panel-body {
+    padding:.8rem;
+}
+
+.review-container h5,p {
+    text-align: left;
+}
+
+.review-container .panel-body {
+    padding:1rem;
 }

@@ -71,7 +71,7 @@ angular.module('authService', [])
     interceptorFactory.responseError = function(response) {
         //If the user is not logged in the user will be redirected to the login page.
         if(response.status === 403) {
-            $location.path('/login');
+            $location.path('/');
         }
 
         return $q.reject(response);

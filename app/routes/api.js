@@ -43,14 +43,18 @@ module.exports = function(app, express) {
             username: req.body.username,
             password: req.body.password
         });
-
+        var token = createToken(user);
         //now save the user to the database
         user.save(function(err) {
             if(err) {
                 res.send(err);
                 return;
             }
-            res.json({ message: 'User has been created'});
+            res.json({ 
+                        success: true,
+                        message: 'User has been created',
+                        token: token
+                    });
         });
     });
 

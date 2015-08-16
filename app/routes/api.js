@@ -28,13 +28,23 @@ function createToken(user) {
     return token;
 }
 
-module.exports = function(app, express) {
+module.exports = function(app, express, io) {
     //create a new express router
     var api = express.Router();
 
     /****************************************************
      * UnAuthenticated Routes
      ****************************************************/
+    //Route for getting all books That anyone can see
+    api.get('/all_books', function(req, res){
+        Book.find({}, function(err, books) {
+            if(err) {
+                res.send(err);
+                return;
+            }
+            res.json(books);
+        }).populate('creator');
+    });
 
     //SignUp API
     api.post('/signup', function(req, res) {
@@ -115,6 +125,7 @@ module.exports = function(app, express) {
     /****************************************************
      * Authenticated Routes
      ****************************************************/
+    //Main Book Routes
     api.route('/')
     //Post Route to create a new book
        .post(function(req, res){
@@ -125,12 +136,12 @@ module.exports = function(app, express) {
                 title: req.body.title,
                 rating: req.body.rating
             });
-            book.save(function(err) {
+            book.save(function(err, newBook) {
                 if(err) {
                     res.send(err);
                     return;
                 }
-
+                io.emit('book', newBook);
                 res.json({ message: 'New Story Created.'});
             })
        })
@@ -160,8 +171,6 @@ module.exports = function(app, express) {
                 res.json(users);
             });
         });
-
-
 
     return api
 }

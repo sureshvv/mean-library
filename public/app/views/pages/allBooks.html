@@ -1,0 +1,37 @@
+<div class="jumbotron text-center">
+    <div class="review-container row">
+        <div class="row" ng-repeat="item in book.books">
+            <div class="col-md-3 col-xs-1">
+                <!-- Span Div -->
+            </div>
+            <div class="panel panel-primary col-md-6 col-xs-10">
+              <div class="panel-heading">
+                <h3 class="panel-title">{{ item.title }}</h3>
+              </div>
+              <div class="panel-body book">
+                <div class="container">
+                    <div class="row">
+                        <h5 class="col-sm-4 top-row-review">Author: {{ item.author }}</h5>
+                        <div class="col-sm-4"></div>
+                        <h5 class="col-sm-4 top-row-review">Rating: {{ item.rating }}</h5>
+                    </div>
+                    <div class="row">
+                        <h5 class="col-sm-12"> Review </h5>
+                    </div>
+                    <div class="row">
+                        <p class="col-sm-12"> 
+                            {{ item.content }}
+                        </p>
+                    </div>
+                    <div class="row">
+                        <h5>Reviewed By: {{ item.creator.username }}</h5>
+                    </div>
+                  </div>
+                </div>
+            </div> <!--End of Panel -->
+            <div class="col-md-3 col-xs-1">
+                <!-- Span Div -->
+            </div>
+        </div>
+    </div>
+</div>

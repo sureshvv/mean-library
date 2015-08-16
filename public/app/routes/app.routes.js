@@ -16,5 +16,15 @@ angular.module('appRoutes', ['ngRoute'])
         .when('/logout', {
             templateUrl: 'app/views/pages/logout.html'
         })
+        .when('/allBooks', {
+            templateUrl: 'app/views/pages/allBooks.html',
+            controller: 'AllBooksController',
+            controllerAs: 'book',
+            resolve: {
+                books: function(Book) {
+                    return Book.allBooks();
+                }
+            }
+        })
     $locationProvider.html5Mode(true);
 });

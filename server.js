@@ -18,6 +18,9 @@ var config = require('./config');
 //Create new instance of express object
 var app = express();
 
+//Add in http socket.io dependancy
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 //Use mongoose to connect to the database
 mongoose.connect(config.database, function(err){
     if(err) {
@@ -36,7 +39,7 @@ app.use(morgan('dev'));
 app.use(express.static(__dirname + '/public'));
 
 //require the routes file
-var api = require('./app/routes/api')(app, express);
+var api = require('./app/routes/api')(app, express, io);
 //add the router the middleware
 app.use('/api', api);
 
@@ -46,7 +49,7 @@ app.get('*', function(req, res){
 })
 
 //Start the server
-app.listen(config.port, function(err){
+http.listen(config.port, function(err){
     if(err) {
         console.log(err);
     } else {

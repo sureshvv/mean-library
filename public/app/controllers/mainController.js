@@ -1,6 +1,6 @@
 angular.module('mainController', [])
 
-.controller('MainController', function($rootScope, $location, Auth){
+.controller('MainController', function($rootScope, $location, Auth, toastr){
 
     var vm = this;
 
@@ -33,8 +33,10 @@ angular.module('mainController', [])
                 //On success redirect to home path otherwise return error message    
                 if(data.success) {
                     $location.path('/');
+                    toastr.success(data.message);
                 } else {
                     vm.error = data.message;
+                    toastr.error(data.message);
                 }
             });
     }
@@ -43,5 +45,6 @@ angular.module('mainController', [])
         Auth.logout();
         //On successfult logout redirect to logout page.
         $location.path('/logout');
+        toastr.info("Successfully Logged Out");
     }
 });

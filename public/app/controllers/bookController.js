@@ -1,6 +1,6 @@
 angular.module('bookController', ['bookService'])
 
-.controller('BookController', function(Book, socketio) {
+.controller('BookController', function(Book, socketio, toastr) {
     var vm = this;
     
     Book.allBook()
@@ -19,6 +19,7 @@ angular.module('bookController', ['bookService'])
                 vm.bookData = '';
 
                 vm.message = data.message;
+                toastr.success(data.message);
             });
     };
 

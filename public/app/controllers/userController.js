@@ -7,7 +7,7 @@ angular.module('userController', ['userService'])
             vm.users = data;
         })
 })
-.controller('UserCreateController', function(User, $location, $window) {
+.controller('UserCreateController', function(User, $location, $window, toastr) {
     vm = this;
     vm.signupUser = function() {
         vm.message = '';
@@ -18,6 +18,7 @@ angular.module('userController', ['userService'])
                 //Need set the token since this is separate from Auth
                 $window.localStorage.setItem('token', response.data.token);
                 $location.path('/');
+                toastr.success('Welcome to Mean-Library!')
             })
     }
 });

@@ -6,6 +6,7 @@
             <p class="center">Signup to start a new one!</p>
             <a ng-if="!main.loggedIn" ng-href="/login" class="btn btn-primary">Login</a>
             <a ng-if="!main.loggedIn" ng-href="/signup" class="btn btn-success">Signup</a>
+            <a ng-if="!main.loggedIn" ng-href="/allBooks" class="btn btn-info">See the Reviews</a>
         </div>     
     </div>
     <div class="logged-in" ng-if="main.loggedIn">

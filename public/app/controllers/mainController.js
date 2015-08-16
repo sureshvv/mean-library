@@ -32,7 +32,7 @@ angular.module('mainController', [])
                     });
                 //On success redirect to home path otherwise return error message    
                 if(data.success) {
-                    $location.path('/home');
+                    $location.path('/');
                 } else {
                     vm.error = data.message;
                 }

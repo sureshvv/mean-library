@@ -2,8 +2,8 @@
     <div class="not-logged-in" ng-if="!main.loggedIn">
         <h1>Sign up for Mean-Library</h1>
         <div>
-            <p>Login to see your library,</p>
-            <p>Signup to start a new one!</p>
+            <p class="center">Login to see your library,</p>
+            <p class="center">Signup to start a new one!</p>
             <a ng-if="!main.loggedIn" ng-href="/login" class="btn btn-primary">Login</a>
             <a ng-if="!main.loggedIn" ng-href="/signup" class="btn btn-success">Signup</a>
         </div>     
@@ -12,7 +12,7 @@
         <h1>{{ main.user }}</h1>
     </div>
     <!-- Enter a new book review -->
-    <div class="row" ng-controller="BookController as book">
+    <div class="row" ng-if="main.loggedIn" ng-controller="BookController as book">
         <div class="col-md-3">
             <!-- Span Div -->
         </div>
@@ -21,7 +21,7 @@
             <h3 class="panel-title">Tell everyone about a book!</h3>
           </div>
           <div class="panel-body">
-            <form class="form-horizontal" mehtod="post" ng-submit="book.creaeteBook()">
+            <form class="form-horizontal" mehtod="post" ng-submit="book.createBook()">
                 <fieldset>
                     <div class="form-group">
                         <div class="col-lg-12">
@@ -41,16 +41,23 @@
                     <div class="form-group">
                         <div class="col-lg-12">
                             <select class="form-control" id="rating" name="Rating" placeholer="Rate It" ng-model="book.bookData.rating">
+                              <option value="" disabled selected>Give it a rating!</option>
                               <option>1</option>
                               <option>2</option>
                               <option>3</option>
                               <option>4</option>
                               <option>5</option>
+                              <option>6</option>
+                              <option>7</option>
+                              <option>8</option>
+                              <option>9</option>
+                              <option>10</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group">
-                      <div class="col-lg-10 col-lg-offset-2">
+                      <div class="col-lg-12">
+                        <button type="cancel" class="btn btn-danger">Clear</button>
                         <button type="submit" class="btn btn-success">Create Review</button>
                       </div>
                     </div>
@@ -63,12 +70,12 @@
         </div>
     </div>
     <!-- Previous Entries -->
-    <div class="review-container row" ng-controller="BookController as book">
+    <div ng-if="main.loggedIn" class="review-container row" ng-controller="BookController as book">
         <div class="row" ng-repeat="book in book.books">
             <div class="col-md-3">
                 <!-- Span Div -->
             </div>
-            <div class="panel panel-primary col-md-6">
+            <div class="panel panel-success col-md-6">
               <div class="panel-heading">
                 <h3 class="panel-title">{{ book.title }}</h3>
               </div>

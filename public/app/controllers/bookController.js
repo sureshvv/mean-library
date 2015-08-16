@@ -6,8 +6,6 @@ angular.module('bookController', ['bookService'])
     Book.allBook()
         .success(function(data) {
             vm.books = data;
-
-            console.log(vm.books);
         });
 
     vm.createBook = function() {
